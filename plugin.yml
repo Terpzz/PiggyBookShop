@@ -1,11 +1,11 @@
 name: PCEBookShop
 main: Aericio\PCEBookShop\PCEBookShop
 version: 1.0.3
-api: 3.11.2
+api: 5.0.0
 load: POSTWORLD
 author: Aericio
 depend: [PiggyCustomEnchants]
-soft-depend: [EconomyAPI, MultiEconomy]
+soft-depend: [EconomyAPI]
 website: "https://github.com/Aericio/PCEBookShop/"
 permissions:
   pcebookshop:
