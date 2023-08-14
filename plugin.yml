@@ -11,11 +11,9 @@ permissions:
   pcebookshop:
     default: op
     description: "Allows usage of all PCEBookShop features"
-    children:
-      pcebookshop.command:
-        default: op
-        description: "Allows usage of all PCEBookShop commands"
-        children:
-          pcebookshop.command.bookshop:
-            default: true
-            description: "Allows usage of the /pcebookshop command"
+  pcebookshop.command:
+    default: op
+    description: "Allows usage of all PCEBookShop commands"
+  pcebookshop.command.bookshop:
+    default: true
+    description: "Allows usage of the /pcebookshop command"
