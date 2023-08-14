@@ -10,6 +10,7 @@ use pocketmine\item\enchantment\Enchantment;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\Item;
 use pocketmine\utils\TextFormat;
+use pocketmine\item\ItemTypeIds;
 
 class EventListener implements Listener
 {
@@ -25,14 +26,14 @@ class EventListener implements Listener
     {
         $item = $event->getItem();
         $player = $event->getPlayer();
-        if ($item->getId() !== Item::BOOK) return;
+        if ($item->getTypeId() !== ItemTypeIds::BOOK) return;
         if ($item->getNamedTag()->hasTag("pcebookshop")) {
             $event->setCancelled();
             $nbt = $item->getNamedTag()->getInt("pcebookshop");
             $enchants = $this->plugin->getEnchantmentsByRarity($nbt);
             $enchant = $enchants[array_rand($enchants)];
             if ($enchant instanceof Enchantment) {
-                $item = Item::get(Item::ENCHANTED_BOOK);
+                $item = VanillaItems::ENCHANTED_BOOK();
                 $item->setCustomName(TextFormat::RESET . $this->plugin->getMessage("item.unused-name") . TextFormat::RESET);
                 $item->addEnchantment(new EnchantmentInstance($enchant, $this->plugin->getRandomWeightedElement($enchant->getMaxLevel())));
                 $inventory = $player->getInventory();
