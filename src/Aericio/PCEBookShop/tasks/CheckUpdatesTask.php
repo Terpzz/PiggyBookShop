@@ -16,9 +16,9 @@ class CheckUpdatesTask extends AsyncTask
         $this->setResult([Internet::getURL("https://poggit.pmmp.io/releases.json?name=PCEBookShop", 10, [], $error), $error]);
     }
 
-    public function onCompletion(Server $server): void
+    public function onCompletion(): void
     {
-        $plugin = $server->getPluginManager()->getPlugin("PCEBookShop");
+        $plugin = $this->getServer()->getPluginManager()->getPlugin("PCEBookShop");
         try {
             if ($plugin->isEnabled()) {
                 $results = $this->getResult();
@@ -28,7 +28,7 @@ class CheckUpdatesTask extends AsyncTask
 
                 $data = json_decode($results[0], true);
                 if (version_compare($plugin->getDescription()->getVersion(), $data[0]["version"]) === -1) {
-                    if ($server->getPluginManager()->isCompatibleApi($data[0]["api"][0]["from"])) {
+                    if ($this->getServer()->getPluginManager()->isCompatibleApi($data[0]["api"][0]["from"])) {
                         $plugin->getLogger()->info("PCEBookShop v" . $data[0]["version"] . " is available for download at " . $data[0]["artifact_url"] . "/PCEBookShop.phar");
                     }
                 }
