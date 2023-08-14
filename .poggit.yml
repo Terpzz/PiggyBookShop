@@ -10,8 +10,8 @@ projects:
         version: ^3.0.2
       - src: jojoe77777/FormAPI/libFormAPI
         version: ^2.1.1
-      - src: ParoxityTeam/CortexPE/Commando
-        version: ^3.1.0
+      - src: ACM-PocketMine-MP/Commando/Commando
+        version: ^3.2.1
     lint:
       phpstan: false
 ...
