@@ -47,8 +47,7 @@ class PCEBookShop extends PluginBase
         if (!PacketHooker::isRegistered()) PacketHooker::register($this);
         $this->getServer()->getCommandMap()->register("pcebookshop", new BookShopCommand($this, "pcebookshop", "Opens the PiggyCustomEnchants Book Shop Menu", ["bookshop", "bs"]));
 
-        $this->getServer()->getAsyncPool()->submitTask(new CheckUpdatesTask());
-
+        
         foreach (CustomEnchantManager::getEnchantments() as $enchants) {
             $excluded = $this->getConfig()->get("excluded-enchants", []);
             if (!in_array($enchants->getId(), $excluded) && !in_array(strtolower($enchants->getName()), $excluded)) {
