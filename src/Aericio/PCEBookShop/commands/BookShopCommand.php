@@ -43,7 +43,7 @@ class BookShopCommand extends BaseCommand
                                 $player->sendMessage($this->plugin->getMessage("command.insufficient-funds", ["{AMOUNT}" => round($cost - $economyProvider->getMoney($player), 2, PHP_ROUND_HALF_DOWN)]));
                                 return;
                             }
-                            $item = Item::get(Item::BOOK);
+                            $item = VanillaItems::Book();
                             $item->setCustomName(TextFormat::RESET . $this->plugin->getMessage("item.name", ["{COLOR_RARITY}" => Utils::getColorFromRarity($type), "{ENCHANTMENT}" => $name]) . TextFormat::RESET);
                             $item->setLore([$this->plugin->getMessage("item.lore")]);
                             $item->getNamedTag()->setInt("pcebookshop", $type);
