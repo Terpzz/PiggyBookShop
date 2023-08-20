@@ -4,6 +4,7 @@ branches:
 - master
 projects:
   PCEBookShop:
+    icon: "science-book.gif"
     path: ""
     libs:
       - src: DaPigGuy/libPiggyEconomy/libPiggyEconomy
