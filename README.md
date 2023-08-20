@@ -1,4 +1,4 @@
-# PCEBookShop [![Poggit-CI](https://poggit.pmmp.io/shield.dl/PCEBookShop)](https://poggit.pmmp.io/p/PCEBookShop) [![Discord](https://img.shields.io/discord/330850307607363585?logo=discord)](https://discord.gg/qmnDsSD)
+# PCEBookShop [![Poggit-CI](https://poggit.pmmp.io/shield.dl/PiggyBookShop)](https://poggit.pmmp.io/p/PiggyBookShop) [![Discord](https://img.shields.io/discord/330850307607363585?logo=discord)](https://discord.gg/GmsMv88yWx)
 
 PCEBookShop is an extension to the [PiggyCustomEnchants](https://github.com/DaPigGuy/PiggyCustomEnchants/) plugin which adds a custom enchants book shop.
 
