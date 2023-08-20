@@ -18,7 +18,8 @@ use pocketmine\item\VanillaItems;
 class BookShopCommand extends BaseCommand
 {
     /** @var PCEBookShop */
-    protected $plugin;
+    protected PCEBookShop $plugin;
+    
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
@@ -31,6 +32,7 @@ class BookShopCommand extends BaseCommand
 
     public function sendShopForm(Player $player): void
     {
+        $this->plugin = PCEBookShop::getInstance();
         $form = new SimpleForm(function (Player $player, ?int $data): void {
             if ($data !== null) {
                 $type = array_keys(Utils::RARITY_NAMES)[$data];
@@ -39,10 +41,7 @@ class BookShopCommand extends BaseCommand
                 $form = new ModalForm(function (Player $player, ?bool $data) use ($cost, $name, $type): void {
                     if ($data !== null) {
                         if ($data) {
-                            $economyProvider = $this->plugin->getEconomyProvider();
-                            if ($economyProvider->getMoney($player) < $cost) {
-                                $player->sendMessage($this->plugin->getMessage("command.insufficient-funds", ["{AMOUNT}" => round($cost - $economyProvider->getMoney($player), 2, PHP_ROUND_HALF_DOWN)]));
-                                return;
+                            $economyProvider = $this->plugin->getEconomyProvider();  
                             }
                             $item = VanillaItems::Book();
                             $item->setCustomName(TextFormat::RESET . $this->plugin->getMessage("item.name", ["{COLOR_RARITY}" => Utils::getColorFromRarity($type), "{ENCHANTMENT}" => $name]) . TextFormat::RESET);
@@ -70,7 +69,6 @@ class BookShopCommand extends BaseCommand
                 $form->setButton1("Yes");
                 $form->setButton2("No");
                 $player->sendForm($form);
-                return;
             }
         });
         $form->setTitle($this->plugin->getMessage("menu.title"));
@@ -79,7 +77,6 @@ class BookShopCommand extends BaseCommand
             $form->addButton($this->plugin->getMessage("menu.button", ["{RARITY_COLOR}" => Utils::getColorFromRarity($rarity), "{ENCHANTMENT}" => $name, "{AMOUNT}" => round($cost, 2, PHP_ROUND_HALF_DOWN)]));
         }
         $player->sendForm($form);
-        return;
     }
 
     protected function prepare(): void
