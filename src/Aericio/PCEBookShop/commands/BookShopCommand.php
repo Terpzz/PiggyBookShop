@@ -13,6 +13,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\item\Item;
 use pocketmine\Player;
 use pocketmine\utils\TextFormat;
+use pocketmine\item\VanillaItems;
 
 class BookShopCommand extends BaseCommand
 {
@@ -49,7 +50,7 @@ class BookShopCommand extends BaseCommand
                             $item->getNamedTag()->setInt("pcebookshop", $type);
                             $inventory = $player->getInventory();
                             if ($inventory->canAddItem($item)) {
-                                $economyProvider->takeMoney($player, $cost);
+                            $economyProvider->takeMoney($player, $cost);
                                 $inventory->addItem($item);
                                 return;
                             }
