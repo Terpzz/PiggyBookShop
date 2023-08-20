@@ -42,7 +42,6 @@ class BookShopCommand extends BaseCommand
                     if ($data !== null) {
                         if ($data) {
                             $economyProvider = $this->plugin->getEconomyProvider();  
-                            }
                             $item = VanillaItems::Book();
                             $item->setCustomName(TextFormat::RESET . $this->plugin->getMessage("item.name", ["{COLOR_RARITY}" => Utils::getColorFromRarity($type), "{ENCHANTMENT}" => $name]) . TextFormat::RESET);
                             $item->setLore([$this->plugin->getMessage("item.lore")]);
