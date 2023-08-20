@@ -50,8 +50,13 @@ class BookShopCommand extends BaseCommand
                             $item->getNamedTag()->setInt("pcebookshop", $type);
                             $inventory = $player->getInventory();
                             if ($inventory->canAddItem($item)) {
-                            $economyProvider->takeMoney($player, $cost);
-                                $inventory->addItem($item);
+                            $this->plugin->getEconomyProvider()->takeMoney($player, $cost, function (bool $success) use ($player, $item): void {
+                                     if (!$success) {
+                                         $player->sendMessage('You do not have enough money to buy this book.');
+                                         return;
+                                     }
+                                     $player->getInventory()->addItem($item);
+                                 });
                                 return;
                             }
                             $player->sendMessage($this->plugin->getMessage("menu.confirmation.inventory-full"));
