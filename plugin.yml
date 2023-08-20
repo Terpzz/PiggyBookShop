@@ -3,17 +3,11 @@ main: Aericio\PCEBookShop\PCEBookShop
 version: 2.0.0
 api: 5.0.0
 load: POSTWORLD
-author: Aericio
+author: antbag
 depend: [PiggyCustomEnchants]
 soft-depend: [EconomyAPI]
 website: "https://github.com/Aericio/PCEBookShop/"
 permissions:
-  pcebookshop:
-    default: op
-    description: "Allows usage of all PCEBookShop features"
-  pcebookshop.command:
-    default: op
-    description: "Allows usage of all PCEBookShop commands"
   pcebookshop.command.bookshop:
     default: true
     description: "Allows usage of the /pcebookshop command"
