@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Aericio\PCEBookShop;
 
 use Aericio\PCEBookShop\commands\BookShopCommand;
-use Aericio\PCEBookShop\tasks\CheckUpdatesTask;
 use Aericio\PCEBookShop\utils\Utils;
 use CortexPE\Commando\exception\HookAlreadyRegistered;
 use CortexPE\Commando\PacketHooker;
@@ -16,17 +15,15 @@ use DaPigGuy\libPiggyEconomy\providers\EconomyProvider;
 use DaPigGuy\PiggyCustomEnchants\CustomEnchantManager;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
+use pocketmine\utils\SingletonTrait;
 
 class PCEBookShop extends PluginBase
 {
-    /** @var Config */
-    private $messages;
 
-    /** @var EconomyProvider */
-    public $economyProvider;
-
-    /** @var array */
-    public $enchantments = [];
+    private Config $messages;
+    public EconomyProvider $economyProvider;
+    public array $enchantments = [];
+    use SingletonTrait;
 
     /**
      * @throws HookAlreadyRegistered
