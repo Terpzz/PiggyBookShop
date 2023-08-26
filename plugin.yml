@@ -5,8 +5,8 @@ api: 5.0.0
 load: POSTWORLD
 author: antbag
 depend: [PiggyCustomEnchants]
-soft-depend: [EconomyAPI]
-website: "https://github.com/Aericio/PCEBookShop/"
+soft-depend: [EconomyAPI, BedrockEconomy]
+website: "https://github.com/antbag-pm-pl/PiggyBookShop/"
 permissions:
   pcebookshop.command.bookshop:
     default: true
