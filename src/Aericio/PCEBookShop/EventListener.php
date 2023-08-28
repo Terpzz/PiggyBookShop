@@ -15,7 +15,6 @@ use pocketmine\item\ItemTypeIds;
 class EventListener implements Listener
 {
     /** @var PCEBookShop */
-    private $plugin;
 
     public function __construct(PCEBookShop $plugin)
     {
@@ -28,7 +27,7 @@ class EventListener implements Listener
         $player = $event->getPlayer();
         if ($item->getTypeId() !== ItemTypeIds::BOOK) return;
         if ($item->getNamedTag()->hasTag("pcebookshop")) {
-            $event->setCancelled();
+            $event->cancel();
             $nbt = $item->getNamedTag()->getInt("pcebookshop");
             $enchants = $this->plugin->getEnchantmentsByRarity($nbt);
             $enchant = $enchants[array_rand($enchants)];
