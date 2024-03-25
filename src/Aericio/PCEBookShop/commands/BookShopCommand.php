@@ -11,15 +11,13 @@ use jojoe77777\FormAPI\ModalForm;
 use jojoe77777\FormAPI\SimpleForm;
 use pocketmine\command\CommandSender;
 use pocketmine\item\Item;
-use pocketmine\Player;
-use pocketmine\utils\TextFormat;
 use pocketmine\item\VanillaItems;
+use pocketmine\player\Player;
+use pocketmine\utils\TextFormat;
 
 class BookShopCommand extends BaseCommand
 {
-    /** @var PCEBookShop */
     protected PCEBookShop $plugin;
-    
 
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
@@ -41,20 +39,20 @@ class BookShopCommand extends BaseCommand
                 $form = new ModalForm(function (Player $player, ?bool $data) use ($cost, $name, $type): void {
                     if ($data !== null) {
                         if ($data) {
-                            $economyProvider = $this->plugin->getEconomyProvider();  
-                            $item = VanillaItems::Book();
+                            $economyProvider = $this->plugin->getEconomyProvider();
+                            $item = VanillaItems::BOOK();
                             $item->setCustomName(TextFormat::RESET . $this->plugin->getMessage("item.name", ["{COLOR_RARITY}" => Utils::getColorFromRarity($type), "{ENCHANTMENT}" => $name]) . TextFormat::RESET);
                             $item->setLore([$this->plugin->getMessage("item.lore")]);
                             $item->getNamedTag()->setInt("pcebookshop", $type);
                             $inventory = $player->getInventory();
                             if ($inventory->canAddItem($item)) {
-                            $this->plugin->getEconomyProvider()->takeMoney($player, $cost, function (bool $success) use ($player, $item): void {
-                                     if (!$success) {
-                                         $player->sendMessage('You do not have enough money to buy this book.');
-                                         return;
-                                     }
-                                     $player->getInventory()->addItem($item);
-                                 });
+                                $this->plugin->getEconomyProvider()->takeMoney($player, $cost, function (bool $success) use ($player, $item): void {
+                                    if (!$success) {
+                                        $player->sendMessage('You do not have enough money to buy this book.');
+                                        return;
+                                    }
+                                    $player->getInventory()->addItem($item);
+                                });
                                 return;
                             }
                             $player->sendMessage($this->plugin->getMessage("menu.confirmation.inventory-full"));
