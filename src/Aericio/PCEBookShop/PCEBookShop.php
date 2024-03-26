@@ -20,6 +20,7 @@ use pocketmine\utils\SingletonTrait;
 class PCEBookShop extends PluginBase
 {
 
+    private static ?self $plugin = null;
     private Config $messages;
     public EconomyProvider $economyProvider;
     public array $enchantments = [];
