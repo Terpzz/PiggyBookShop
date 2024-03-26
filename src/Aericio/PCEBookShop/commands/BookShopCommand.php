@@ -19,11 +19,6 @@ class BookShopCommand extends BaseCommand
 {
     protected PCEBookShop $plugin;
 
-    public function __construct(PCEBookShop $plugin) {
-        $this->plugin = $plugin;
-        parent::__construct("bookshop", "Opens the PiggyCustomEnchants Book Shop Menu", "Usage: /bookshop", ["bs"]);
-    }
-
     public function onRun(CommandSender $sender, string $aliasUsed, array $args): void
     {
         if (!$sender instanceof Player) {
