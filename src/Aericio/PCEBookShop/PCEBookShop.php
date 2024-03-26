@@ -42,7 +42,7 @@ class PCEBookShop extends PluginBase
         $this->economyProvider = libPiggyEconomy::getProvider($this->getConfig()->get("economy"));
 
         if (!PacketHooker::isRegistered()) PacketHooker::register($this);
-        $this->getServer()->getCommandMap()->register("pcebookshop", new BookShopCommand($this, "pcebookshop", "Opens the PiggyCustomEnchants Book Shop Menu", ["bookshop", "bs"]));
+        $this->getServer()->getCommandMap()->register("pcebookshop", new BookShopCommand($this));
         
         foreach (CustomEnchantManager::getEnchantments() as $enchants) {
             $excluded = $this->getConfig()->get("excluded-enchants", []);
