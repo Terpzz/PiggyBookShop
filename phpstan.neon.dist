@@ -6,5 +6,9 @@ parameters:
     - source/vendor
   reportUnmatchedIgnoredErrors: false
   checkMissingIterableValueType: false
+
 autoload_files:
   - phar:///pocketmine/PocketMine-MP.phar/vendor/autoload.php
+
+includes:
+  - vendor/phpstan/phpstan-phpunit/extension.neon
