@@ -16,6 +16,8 @@ use Aericio\PCEBookShop\PCEBookShop;
 
 class EventListener implements Listener
 {
+
+    private PCEBookShop $plugin;
     
     public function __construct(PCEBookShop $plugin)
     {
