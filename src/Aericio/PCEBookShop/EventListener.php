@@ -12,10 +12,11 @@ use pocketmine\item\Item;
 use pocketmine\utils\TextFormat;
 use pocketmine\item\ItemTypeIds;
 
+use Aericio\PCEBookShop\PCEBookShop;
+
 class EventListener implements Listener
 {
-    /** @var PCEBookShop */
-
+    
     public function __construct(PCEBookShop $plugin)
     {
         $this->plugin = $plugin;
