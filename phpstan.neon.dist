@@ -2,7 +2,7 @@ parameters:
   paths:
     - /source/src
   level: 8
-  excludes_analyse:
+  excludePaths:
     - source/vendor
   reportUnmatchedIgnoredErrors: false
   checkMissingIterableValueType: false
