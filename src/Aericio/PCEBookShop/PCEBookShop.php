@@ -33,6 +33,7 @@ class PCEBookShop extends PluginBase
      */
     public function onEnable(): void
     {
+        self::$plugin = $this;
         $this->saveResource("messages.yml");
         $this->messages = new Config($this->getDataFolder() . "messages.yml");
         $this->saveDefaultConfig();
