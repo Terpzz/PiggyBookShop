@@ -11,4 +11,4 @@ autoload_files:
   - phar:///pocketmine/PocketMine-MP.phar/vendor/autoload.php
 
 includes:
-  - vendor/phpstan/phpstan-phpunit/extension.neon
+  - phar:///source/vendor/Commando.phar/src/
